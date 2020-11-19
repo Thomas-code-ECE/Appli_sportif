@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Application_running</string>
+    <string name="title_activity_maps_course_duo">Map</string>
 </resources>

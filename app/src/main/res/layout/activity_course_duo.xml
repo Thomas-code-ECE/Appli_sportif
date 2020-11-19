@@ -7,11 +7,21 @@
     tools:context="com.example.application_running.Course_duo">
 
     <Chronometer
-        android:id="@+id/chronometer"
+        android:id="@+id/chronometer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="129dp"
-        android:layout_y="68dp"
+        android:layout_x="211dp"
+        android:layout_y="378dp"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Chronometer
+        android:id="@+id/chronometer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="60dp"
+        android:layout_y="378dp"
         android:textSize="30sp"
         tools:layout_editor_absoluteX="156dp"
         tools:layout_editor_absoluteY="16dp" />
@@ -19,8 +29,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="37dp"
-        android:layout_y="156dp"
+        android:layout_x="21dp"
+        android:layout_y="311dp"
         android:onClick="startChronometer"
         android:text="Start"
         tools:layout_editor_absoluteX="52dp"
@@ -29,8 +39,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="143dp"
-        android:layout_y="156dp"
+        android:layout_x="133dp"
+        android:layout_y="313dp"
         android:onClick="pauseChronometer"
         android:text="Pause"
         tools:layout_editor_absoluteX="161dp"
@@ -40,10 +50,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="244dp"
-        android:layout_y="154dp"
+        android:layout_y="311dp"
         android:onClick="resetChronometer"
         android:text="Reset"
         tools:layout_editor_absoluteX="269dp"
         tools:layout_editor_absoluteY="85dp" />
+
+
 
 </AbsoluteLayout>

@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,52 +37,54 @@ public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallb
     private String sType;
     private double lat1=0,long1=0,lat2=0,long2=0;
     private int flag=0;
+    private static int AUTOCOMPLETE_REQUEST_CODE=1;
+    private Button ready;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_course_duo);
-
-
-
-
+        this.ready=findViewById(R.id.button6);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        /*SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);*/
+        mapFragment.getMapAsync(this);
 
         etSource = findViewById(R.id.et_source);
         etDestination=findViewById(R.id.et_destination);
         textView=findViewById(R.id.text_view);
 
-        Places.initialize(getApplicationContext(),"AIzaSyD9NEJVDGrCl9s4vDwxgdAEHm2Ko717aJg");
+        //initialisation de "Places"
+        Places.initialize(getApplicationContext(),getString(R.string.api_key));
+        //Désactiver l'afficahe d'évenelents de focus sur le tactile
         etSource.setFocusable(false);
+        //Action réalisée lorsque l'on rentre le lieu de depart
         etSource.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v){
                 sType="source";
+                //Specificication des informations à retourner (ici les adresses et longitude,latitude )
                 List<Place.Field> fields = Arrays.asList(Place.Field.ADDRESS,Place.Field.LAT_LNG);
-                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY,fields).build(Maps_course_duo.this);
-                startActivityForResult(intent,100);
+                //Creation d'un nouveau builder permettant de lancer l'autocomplete
+                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN,fields).build(Maps_course_duo.this);
+                startActivityForResult(intent,AUTOCOMPLETE_REQUEST_CODE);
 
             }
         });
         etDestination.setFocusable(false);
         etDestination.setOnClickListener(new View.OnClickListener(){
-          @Override
-          public void onClick(View v){
-              sType="destination";
-              List<Place.Field> fields = Arrays.asList(Place.Field.ADDRESS,Place.Field.LAT_LNG);
-              Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY,fields).build(Maps_course_duo.this);
-              startActivityForResult(intent,100);
-          }
+            @Override
+            public void onClick(View v){
+                sType="destination";
+                List<Place.Field> fields = Arrays.asList(Place.Field.ADDRESS,Place.Field.LAT_LNG);
+                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN,fields).build(Maps_course_duo.this);
+                startActivityForResult(intent,AUTOCOMPLETE_REQUEST_CODE);
+            }
         });
 
         textView.setText("0.0 Kilometers");
     }
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -96,21 +99,19 @@ public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallb
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng ECE = new LatLng(48, 2);
+        mMap.addMarker(new MarkerOptions().position(ECE).title("Paris"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ECE));
     }
-
     @Override
     protected void onActivityResult(int requestCode,int resultCode,@Nullable Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-
-        if(requestCode==100 && resultCode == RESULT_OK){
+        if(requestCode==AUTOCOMPLETE_REQUEST_CODE && resultCode == RESULT_OK){
             Place place = Autocomplete.getPlaceFromIntent(data);
             if(sType.equals("source")){
                 flag++;
                 etSource.setText(place.getAddress());
-                String sSource = String.valueOf(place.getAddress());
+                String sSource = String.valueOf(place.getLatLng());
                 sSource = sSource.replaceAll("lat/lng:","");
                 sSource = sSource.replace("(","");
                 sSource = sSource.replace(")","");
@@ -120,25 +121,23 @@ public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallb
             }else{
                 flag++;
                 etDestination.setText(place.getAddress());
-                String sSource = String.valueOf(place.getAddress());
-                sSource = sSource.replaceAll("lat/lng;","");
-                sSource = sSource.replace("(","");
-                sSource = sSource.replace(")","");
-                String[] split = sSource.split(",");
-                lat2=Double.parseDouble(split[0]);
-                long2=Double.parseDouble(split[1]);
-
+                String sDestination = String.valueOf(place.getLatLng());
+                sDestination = sDestination.replaceAll("lat/lng:","");
+                sDestination = sDestination.replace("(","");
+                sDestination = sDestination.replace(")","");
+                String[] split2 = sDestination.split(",");
+                lat2=Double.parseDouble(split2[0]);
+                long2=Double.parseDouble(split2[1]);
             }
-
             if(flag>=2){
                 distance(lat1,long1,lat2,long2);
+                changeState();
             }
         }else if(requestCode == AutocompleteActivity.RESULT_ERROR){
             Status status = Autocomplete.getStatusFromIntent(data);
             Toast.makeText(getApplicationContext(),status.getStatusMessage(),Toast.LENGTH_SHORT).show();
         }
     }
-
     private void distance(double lat1,double long1,double lat2,double long2){
         double longDiff=long1-long2;
         double distance=Math.sin(deg2rad(lat1))*Math.sin(deg2rad(lat2))+Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2))*Math.cos(deg2rad(longDiff));
@@ -149,6 +148,9 @@ public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallb
         textView.setText(String.format(Locale.US,"%2f Kilometers",distance));
     }
 
+    private void changeState(){
+        ready.setVisibility(View.VISIBLE);
+    }
     private double rad2deg(double distance) {
         return (distance*180.0/Math.PI);
     }

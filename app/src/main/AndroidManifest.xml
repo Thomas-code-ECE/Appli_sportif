@@ -8,9 +8,7 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,19 +25,14 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="@string/api_key" />
 
+        <activity android:name=".statistique" />
         <activity
             android:name=".Maps_course_duo"
-            android:label="@string/title_activity_maps_course_duo"></activity>
-
-        <meta-data
-            android:name="com.google.android.gms.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
+            android:label="@string/title_activity_maps_course_duo" />
         <activity android:name=".Course_duo" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -6,40 +6,53 @@
     android:layout_height="match_parent"
     tools:context="com.example.application_running.MainActivity">
 
-<fragment
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="360dp"
-    android:layout_height="300dp"
-    tools:context=".Maps_course_duo" />
-
     <EditText
         android:id="@+id/et_source"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_x="-2dp"
-        android:layout_y="322dp"
-        android:hint="Location source"
-        android:background="@android:drawable/editbox_background"/>
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        android:layout_width="323dp"
+        android:layout_height="43dp"
+        android:layout_x="18dp"
+        android:layout_y="321dp"
+        android:background="@android:drawable/editbox_background"
+        android:hint="Location source" />
 
     <EditText
         android:id="@+id/et_destination"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_x="-2dp"
-        android:layout_y="377dp"
-        android:hint="Enter destination location"
-        android:background="@android:drawable/editbox_background"/>
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        android:layout_width="320dp"
+        android:layout_height="43dp"
+        android:layout_x="19dp"
+        android:layout_y="375dp"
+        android:background="@android:drawable/editbox_background"
+        android:hint="Enter destination location" />
 
     <TextView
         android:id="@+id/text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_x="-1dp"
-        android:layout_y="413dp"
+        android:layout_width="314dp"
+        android:layout_height="45dp"
+        android:layout_x="23dp"
+        android:layout_y="426dp"
         android:gravity="center"
         android:textColor="@color/colorAccent"
         android:textSize="24sp" />
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="344dp"
+        android:layout_height="287dp"
+        android:layout_x="7dp"
+        android:layout_y="13dp"
+        tools:context=".Maps_course_duo" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="268dp"
+        android:layout_height="wrap_content"
+        android:layout_x="47dp"
+        android:layout_y="480dp"
+        android:text="C'est parti !"
+        android:textSize="30sp"
+        android:visibility="invisible" />
+
 </AbsoluteLayout>

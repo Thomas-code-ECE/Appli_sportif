@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Application_running</string>
     <string name="title_activity_maps_course_duo">Map</string>
+    <string name="api_key">AIzaSyA498A3FeeQ4aZE6dxLlaDZJi1thHKEy8c</string>
+    <string name="title_activity_choose_place">Map</string>
 </resources>

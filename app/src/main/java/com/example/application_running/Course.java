@@ -44,7 +44,9 @@ public class Course extends AppCompatActivity {
     }
 
     private void initialisationDistance(){
-        DistanceView.setText(String.valueOf(distance));
+
+        String str = String.valueOf(distance);
+        DistanceView.setText("Distance à parcourir : " +str+" Km");
     }
 
     public void startChronometer(View v) {

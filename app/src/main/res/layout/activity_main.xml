@@ -7,18 +7,18 @@
     tools:context="com.example.application_running.MainActivity">
 
     <ImageView
-        android:layout_width="116dp"
-        android:layout_height="38dp"
-        android:layout_x="121dp"
-        android:layout_y="-2dp"
+        android:layout_width="222dp"
+        android:layout_height="83dp"
+        android:layout_x="67dp"
+        android:layout_y="-8dp"
         android:src="@drawable/logo" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="311dp"
         android:layout_height="77dp"
-        android:layout_x="27dp"
-        android:layout_y="33dp"
+        android:layout_x="26dp"
+        android:layout_y="59dp"
         android:text="Course chronométrée"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +28,8 @@
         android:id="@+id/button2"
         android:layout_width="311dp"
         android:layout_height="77dp"
-        android:layout_x="28dp"
-        android:layout_y="122dp"
+        android:layout_x="24dp"
+        android:layout_y="149dp"
         android:text="Course fantome"
         tools:layout_editor_absoluteX="21dp"
         tools:layout_editor_absoluteY="157dp" />
@@ -38,8 +38,8 @@
         android:id="@+id/button3"
         android:layout_width="311dp"
         android:layout_height="77dp"
-        android:layout_x="28dp"
-        android:layout_y="208dp"
+        android:layout_x="25dp"
+        android:layout_y="234dp"
         android:text="Course en DUO"
         tools:layout_editor_absoluteX="23dp"
         tools:layout_editor_absoluteY="250dp" />
@@ -48,8 +48,8 @@
         android:id="@+id/button4"
         android:layout_width="311dp"
         android:layout_height="77dp"
-        android:layout_x="28dp"
-        android:layout_y="295dp"
+        android:layout_x="24dp"
+        android:layout_y="323dp"
         android:text="Voir la carte des runners"
         tools:layout_editor_absoluteX="23dp"
         tools:layout_editor_absoluteY="346dp" />
@@ -58,8 +58,8 @@
         android:id="@+id/button5"
         android:layout_width="311dp"
         android:layout_height="77dp"
-        android:layout_x="25dp"
-        android:layout_y="391dp"
+        android:layout_x="26dp"
+        android:layout_y="412dp"
         android:text="Mes statistiques"
         tools:layout_editor_absoluteX="23dp"
         tools:layout_editor_absoluteY="441dp" />

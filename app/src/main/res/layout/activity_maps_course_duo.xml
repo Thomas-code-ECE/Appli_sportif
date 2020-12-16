@@ -53,6 +53,8 @@
         android:layout_y="480dp"
         android:text="C'est parti !"
         android:textSize="30sp"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:background="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"/>
 
 </AbsoluteLayout>

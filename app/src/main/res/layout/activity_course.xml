@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/text1"
-        android:layout_width="128dp"
-        android:layout_height="47dp"
-        android:layout_x="109dp"
-        android:layout_y="55dp"
+        android:layout_width="328dp"
+        android:layout_height="117dp"
+        android:layout_x="12dp"
+        android:layout_y="15dp"
         android:gravity="center"
 
         android:text="TextView"
@@ -21,45 +21,51 @@
 
     <Chronometer
         android:id="@+id/chronometer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="126dp"
-        android:layout_y="259dp"
+        android:layout_width="335dp"
+        android:layout_height="82dp"
+        android:layout_x="11dp"
+        android:layout_y="141dp"
+        android:gravity="center"
         android:textSize="30sp"
-
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="240dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="33dp"
-        android:layout_y="159dp"
+        android:layout_width="332dp"
+        android:layout_height="75dp"
+        android:layout_x="11dp"
+        android:layout_y="235dp"
         android:onClick="startChronometer"
         android:text="Start"
 
         tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="159dp" />
+        tools:layout_editor_absoluteY="159dp"
+        android:background="#408ec8"
+        android:textColor="#FFFFFF"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="133dp"
-        android:layout_y="158dp"
+        android:layout_width="332dp"
+        android:layout_height="76dp"
+        android:layout_x="12dp"
+        android:layout_y="319dp"
         android:onClick="pauseChronometer"
         android:text="Pause"
 
         tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="159dp" />
+        tools:layout_editor_absoluteY="159dp"
+        android:background="#7a2048"
+        android:textColor="@android:color/white"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="234dp"
-        android:layout_y="158dp"
+        android:layout_width="332dp"
+        android:layout_height="82dp"
+        android:layout_x="13dp"
+        android:layout_y="404dp"
         android:onClick="resetChronometer"
         android:text="Reset"
         tools:layout_editor_absoluteX="230dp"
-        tools:layout_editor_absoluteY="159dp" />
+        tools:layout_editor_absoluteY="159dp"
+        android:background="#1e2761"
+        android:textColor="@android:color/white"/>
 
 </AbsoluteLayout>

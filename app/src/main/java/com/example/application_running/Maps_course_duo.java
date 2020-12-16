@@ -93,7 +93,7 @@ public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallb
             }
         });
 
-        textView.setText("0.0 Kilometers");
+        textView.setText("0.0 Kilomètres");
     }
     /**
      * Manipulates the map once available.
@@ -155,8 +155,8 @@ public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallb
         distance=rad2deg(distance);
         distance=distance*60*1.1515;
         distance=distance*1.609344;
-        distance=(double)(((int)(distance*100))/100);
-        textView.setText(String.format(Locale.US,"%2f Kilometers",distance));
+        distance=(double) Math.round(distance * 10) / 10;
+        textView.setText(String.format(Locale.US,"%2f Kilomètres",distance));
     }
 
     private void changeState(){

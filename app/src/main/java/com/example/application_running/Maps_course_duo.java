@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallback {
-
+    public double distance;
     private GoogleMap mMap;
     private EditText etSource,etDestination;
     private TextView textView;
@@ -80,6 +80,16 @@ public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallb
                 List<Place.Field> fields = Arrays.asList(Place.Field.ADDRESS,Place.Field.LAT_LNG);
                 Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN,fields).build(Maps_course_duo.this);
                 startActivityForResult(intent,AUTOCOMPLETE_REQUEST_CODE);
+            }
+        });
+
+        ready.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent otherActivity = new Intent(getApplicationContext(),Course.class);
+                otherActivity.putExtra("distance",distance);
+                startActivity(otherActivity);
+                finish();
             }
         });
 
@@ -140,11 +150,12 @@ public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallb
     }
     private void distance(double lat1,double long1,double lat2,double long2){
         double longDiff=long1-long2;
-        double distance=Math.sin(deg2rad(lat1))*Math.sin(deg2rad(lat2))+Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2))*Math.cos(deg2rad(longDiff));
+        distance=Math.sin(deg2rad(lat1))*Math.sin(deg2rad(lat2))+Math.cos(deg2rad(lat1))*Math.cos(deg2rad(lat2))*Math.cos(deg2rad(longDiff));
         distance=Math.acos(distance);
         distance=rad2deg(distance);
         distance=distance*60*1.1515;
         distance=distance*1.609344;
+        distance=(double)(((int)(distance*100))/100);
         textView.setText(String.format(Locale.US,"%2f Kilometers",distance));
     }
 

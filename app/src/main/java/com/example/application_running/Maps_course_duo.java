@@ -57,7 +57,7 @@ public class Maps_course_duo extends FragmentActivity implements OnMapReadyCallb
 
         //initialisation de "Places"
         Places.initialize(getApplicationContext(),getString(R.string.api_key));
-        //Désactiver l'afficahe d'évenelents de focus sur le tactile
+        //Désactiver l'afficahe d'évenements de focus sur le tactile
         etSource.setFocusable(false);
         //Action réalisée lorsque l'on rentre le lieu de depart
         etSource.setOnClickListener(new View.OnClickListener(){
